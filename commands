@@ -5,24 +5,26 @@ source "$PLUGIN_AVAILABLE_PATH/gitclone/functions"
 
 case "$1" in
   help | gitclone:help)
-    help_content_func () {
+    help_content_func() {
       declare desc="return help_content string"
       cat<<help_content
-    gitclone, creates/updates app from remote git repo  
+    gitclone, creates/updates app from remote git repo
+    gitclone:key, outputs the dokku public deploy key
+    gitclone:allow, adds a domain to known_hosts
 help_content
     }
 
     if [[ $1 = "gplive:help" ]] ; then
-        echo -e 'Usage: dokku gitclone <app> <git-url>'
-        echo ''
-        echo 'Clones and builds remote repos into dokku app'
-        echo ''
-        echo 'Example:'
-        echo ''
-        echo '$ dokku gitclone nodeapp https://github.com/heroku/node-js-sample'
-        echo ''
+      echo -e 'Usage: dokku gitclone <app> <git-url>'
+      echo ''
+      echo 'Clones and builds remote repos into dokku app'
+      echo ''
+      echo 'Example:'
+      echo ''
+      echo '$ dokku gitclone nodeapp https://github.com/heroku/node-js-sample'
+      echo ''
     else
-        help_content_func
+      help_content_func
     fi
     ;;
 
