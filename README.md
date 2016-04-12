@@ -11,7 +11,7 @@ A dokku plugin which allows you to create an app from a git url
 
 ## Installation
 
-```
+```bash
 # on 0.4.x
 dokku plugin:install https://github.com/crisward/dokku-gitclone.git gitclone
 ```
