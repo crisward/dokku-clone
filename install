@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+if [[ ! -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
+    ssh-keygen -t rsa -N "" -f $DOKKU_ROOT/.ssh/id_rsa
+fi
