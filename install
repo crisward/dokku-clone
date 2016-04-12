@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
-if [[ ! -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
-    ssh-keygen -t rsa -N "" -q -f $DOKKU_ROOT/.ssh/id_rsa
-    chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa.pub"
-    chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa"
-fi
+
+gitclone_install() {
+  declare desc="generates an ssh keypair for the dokku user"
+  if [[ -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
+    return;
+  fi
+
+  ssh-keygen -t rsa -N "" -q -f "$DOKKU_ROOT/.ssh/id_rsa"
+  chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa.pub"
+  chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa"
+}
+
+gitclone_install "$@"
