@@ -29,9 +29,10 @@ ssh dokku@dokku.me gitclone nodetest https://github.com/heroku/node-js-getting-s
 # you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
 ```
 
-### Private Repos
+### Private Repos / git urls
 
-If you need to clone private repos you'll need to add a deploy key to your git provider (ie github).
+If you need to clone private repos, or just want to use git@ urls you'll need to add a deploy key to your git provider (ie github).
+If you want to be able to pull any repo from github, you'll have to add the key [here](https://github.com/settings/ssh)
 Gitclone creates a fresh keypair when the plugin is first installed. The public part of the key can be accessed with.
 
 ```bash
@@ -40,6 +41,10 @@ ssh dokku@dokku.me gitclone:key
 
 # save to clipboard with (mac only)
 ssh dokku@dokku.me gitclone:key | pbcopy
+
+# before cloning the repo, you'll need to add the remote to known hosts with
+ssh dokku@dokku.me gitclone:allow github.com
+
 ```
 
 
