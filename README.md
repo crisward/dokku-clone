@@ -20,7 +20,7 @@ dokku plugin:install https://github.com/crisward/dokku-gitclone.git gitclone
 
 ```bash
 # create or update and app from eg github
-dokku@yoursever.com gitclone yourapp https://github.com/you/yourproject.git
+dokku@dokku.me gitclone yourapp https://github.com/you/yourproject.git
 
 #eg 
 ssh dokku@dokku.me apps:create nodetest
