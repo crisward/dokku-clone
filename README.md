@@ -18,9 +18,15 @@ dokku plugin:install https://github.com/crisward/dokku-gitclone.git gitclone
 
 ## Usage
 
-```
+```bash
 # create or update and app from eg github
 dokku@yoursever.com gitclone yourapp https://github.com/you/yourproject.git
+
+#eg 
+ssh dokku@dokku.me apps:create nodetest
+ssh dokku@dokku.me gitclone nodetest https://github.com/heroku/node-js-getting-started.git
+
+# you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
 ```
 
 

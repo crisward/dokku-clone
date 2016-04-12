@@ -28,7 +28,7 @@ help_content
   gitclone)
     gitclone_main_cmd() {
       [[ -z $2 ]] && echo "Please specify an app to run the command on" && exit 1
-      [[ -z $3 ]] && echo "Please specify an git remote url" && exit 1
+      [[ -z $3 ]] && echo "Please specify an app name and git url ie. dokku gitclone <app> <giturl>" && exit 1
       verify_app_name "$2"
       APP="$2"
       GITURL="$3"
