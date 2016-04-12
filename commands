@@ -32,7 +32,7 @@ help_content
       verify_app_name "$2"
       APP="$2"
       GITURL="$3"
-      dokku_log_info1 "Enabling maintenance mode for $APP..."
+      dokku_log_info1 "Creating $APP from $GITURL..."
       if [[ ! -d "$DOKKU_ROOT/$APP/.gitclone" ]]; then
         cd "$DOKKU_ROOT/$APP"
         git clone $GITURL .gitclone
