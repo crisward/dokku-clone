@@ -50,6 +50,13 @@ help_content
     }
     gitclone_key_cmd "$@"
     ;;
+  gitclone:allow)
+    gitclone_allow_cmd() {
+      [[ -z $2 ]] && echo "Please supply a git domain ie 'dokku gitclone:allow github.com'" && exit 1
+      ssh-keyscan -t rsa $2
+    }
+    gitclone_allow_cmd "$@"
+    ;;
   *)
     exit $DOKKU_NOT_IMPLEMENTED_EXIT
     ;;
