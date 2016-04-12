@@ -37,7 +37,7 @@ gitclone_allow_cmd() {
   declare DOMAIN="$2"
   local cmd="$1"
 
-  [[ -z $2 ]] dokku_log_fail "Please supply a git domain ie 'dokku gitclone:allow github.com'"
+  [[ -z $2 ]] && dokku_log_fail "Please supply a git domain ie 'dokku gitclone:allow github.com'"
 
   ssh-keyscan -t rsa "$DOMAIN" >> "$DOKKU_ROOT/.ssh/known_hosts"
   dokku_log_info1 "$DOMAIN added to known hosts"
