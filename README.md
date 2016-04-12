@@ -29,5 +29,17 @@ ssh dokku@dokku.me gitclone nodetest https://github.com/heroku/node-js-getting-s
 # you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
 ```
 
+### Private Repos
+
+If you need to clone private repos you'll need to add a deploy key to your git provider (ie github).
+Gitclone creates a fresh keypair when the plugin is first installed. The public part of the key can be accessed with.
+
+```bash
+# output with
+ssh dokku@dokku.me gitclone:key
+
+# save to clipboard with (mac only)
+ssh dokku@dokku.me gitclone:key | pbcopy
+```
 
 
