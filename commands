@@ -45,7 +45,6 @@ help_content
     ;;
   gitclone:key)
     gitclone_key_cmd() {
-      dokku_log_info1 "Getting Deploy Key"
       [[ ! -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]] && echo "There is no deploy key, please re-install the gitclone plugin" && exit 1
       cat "$DOKKU_ROOT/.ssh/id_rsa.pub"
     }
