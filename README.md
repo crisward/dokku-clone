@@ -1,5 +1,3 @@
-!! In Development
-
 # Dokku Gitclone
 
 A dokku plugin which allows you to create an app from a git url
