@@ -1,4 +1,4 @@
-# Dokku Gitclone
+# Dokku Clone
 
 A dokku plugin which allows you to create an app from a git url
 
@@ -11,18 +11,18 @@ A dokku plugin which allows you to create an app from a git url
 
 ```bash
 # on 0.4.x
-dokku plugin:install https://github.com/crisward/dokku-gitclone.git gitclone
+dokku plugin:install https://github.com/crisward/dokku-clone.git clone
 ```
 
 ## Usage
 
 ```bash
 # create or update and app from eg github
-dokku@dokku.me gitclone yourapp https://github.com/you/yourproject.git
+dokku@dokku.me clone yourapp https://github.com/you/yourproject.git
 
 #eg 
 ssh dokku@dokku.me apps:create nodetest
-ssh dokku@dokku.me gitclone nodetest https://github.com/heroku/node-js-getting-started.git
+ssh dokku@dokku.me clone nodetest https://github.com/heroku/node-js-getting-started.git
 
 # you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
 ```
@@ -31,17 +31,17 @@ ssh dokku@dokku.me gitclone nodetest https://github.com/heroku/node-js-getting-s
 
 If you need to clone private repos, or just want to use git@ urls you'll need to add a deploy key to your git provider (ie github).
 If you want to be able to pull any repo from github, you'll have to add the key [here](https://github.com/settings/ssh)
-Gitclone creates a fresh keypair when the plugin is first installed. The public part of the key can be accessed with.
+Clone creates a fresh keypair when the plugin is first installed. The public part of the key can be accessed with.
 
 ```bash
 # output with
-ssh dokku@dokku.me gitclone:key
+ssh dokku@dokku.me clone:key
 
 # save to clipboard with (mac only)
-ssh dokku@dokku.me gitclone:key | pbcopy
+ssh dokku@dokku.me clone:key | pbcopy
 
 # before cloning the repo, you'll need to add the remote to known hosts with
-ssh dokku@dokku.me gitclone:allow github.com
+ssh dokku@dokku.me clone:allow github.com
 
 ```
 
