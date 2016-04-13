@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/crisward/dokku-clone/master/clone-logo.png" />
+<img src="https://raw.githubusercontent.com/crisward/dokku-clone/master/clone-logo.png?v=2" />
 
 A dokku plugin which allows you to create an app from a git url
 
