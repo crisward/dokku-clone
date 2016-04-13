@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
+
+gitclone_main_cmd() {
+  declare desc="creates/updates app from remote git repo"
+  declare APP="$2" GITURL="$3"
+  local cmd="$1"
+
+  [[ -z $2 ]] && dokku_log_fail "Please specify an app to run the command on"
+  [[ -z $3 ]] && dokku_log_fail "Please specify an app name and git url ie. dokku gitclone <app> <giturl>"
+  verify_app_name "$APP"
+
+  dokku_log_info1 "Creating $APP from $GITURL..."
+  if [[ ! -d "$DOKKU_ROOT/$APP/.gitclone" ]]; then
+    cd "$DOKKU_ROOT/$APP"
+    git clone "$GITURL" .gitclone
+    rsync -a "$DOKKU_ROOT/$APP/.gitclone/.git/" ./
+    rm -rf "$DOKKU_ROOT/$APP/.gitclone"
+    dokku ps:rebuild "$APP"
+  fi
+}
+
+gitclone_key_cmd() {
+  declare desc="outputs the dokku public deploy key"
+  declare APP="$2" GITURL="$3"
+  local cmd="$1"
+
+  if [[ ! -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
+    dokku_log_fail "There is no deploy key, please re-install the gitclone plugin"
+  fi
+  cat "$DOKKU_ROOT/.ssh/id_rsa.pub"
+}
+
+gitclone_allow_cmd() {
+  declare desc="adds a domain to known_hosts"
+  declare DOMAIN="$2"
+  local cmd="$1"
+
+  [[ -z $2 ]] && dokku_log_fail "Please supply a git domain ie 'dokku gitclone:allow github.com'"
+
+  ssh-keyscan -t rsa "$DOMAIN" >> "$DOKKU_ROOT/.ssh/known_hosts"
+  dokku_log_info1 "$DOMAIN added to known hosts"
+}
