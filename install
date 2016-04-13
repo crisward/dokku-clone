@@ -2,11 +2,13 @@
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 gitclone_install() {
-  declare desc="generates an ssh keypair for the dokku user"
+  declare desc="generates an ssh keypair for the dokku user and checks installed correctly"
+  if [[ -d "$PLUGIN_AVAILABLE_PATH/dokkuclone"]]
+    mv "$PLUGIN_AVAILABLE_PATH/dokkuclone" "$PLUGIN_AVAILABLE_PATH/gitclone"
+  fi
   if [[ -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
     return;
   fi
-
   ssh-keygen -t rsa -N "" -q -f "$DOKKU_ROOT/.ssh/id_rsa"
   chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa.pub"
   chown dokku:dokku "$DOKKU_ROOT/.ssh/id_rsa"
