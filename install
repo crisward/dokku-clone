@@ -3,7 +3,7 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 gitclone_install() {
   declare desc="generates an ssh keypair for the dokku user and checks installed correctly"
-  if [[ -d "$PLUGIN_AVAILABLE_PATH/dokkuclone"]]
+  if [[ -d "$PLUGIN_AVAILABLE_PATH/dokkuclone"]]; then
     mv "$PLUGIN_AVAILABLE_PATH/dokkuclone" "$PLUGIN_AVAILABLE_PATH/gitclone"
   fi
   if [[ -f "$DOKKU_ROOT/.ssh/id_rsa.pub" ]]; then
