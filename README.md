@@ -45,6 +45,11 @@ ssh dokku@dokku.me clone:allow github.com
 
 ```
 
+## Credits
+
+Thanks to [Jose Gonzalez](https://github.com/josegonzalez) for the Dokku5 refactor
+and the [Noun Project](https://thenounproject.com/) for the logo
+
 
 ## License
 
