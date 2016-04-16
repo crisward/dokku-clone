@@ -14,7 +14,7 @@ case "$1" in
 help_content
     }
 
-    if [[ $1 = "gplive:help" ]] ; then
+    if [[ $1 = "clone:help" ]] ; then
       echo -e 'Usage: dokku clone <app> <git-url>'
       echo ''
       echo 'Clones and builds remote repos into dokku app'
