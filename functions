@@ -9,7 +9,7 @@ clone_main_cmd() {
 
   [[ -z $2 ]] && dokku_log_fail "Please specify an app to run the command on"
   [[ -z $3 ]] && dokku_log_fail "Please specify an app name and git url ie. dokku clone <app> <giturl>"
-  verify_app_name "$APP"
+  [[ -d "$DOKKU_ROOT/$APP" ]] || dokku apps:create "$APP"
 
   dokku_log_info1 "Creating $APP from $GITURL..."
   if [[ ! -d "$DOKKU_ROOT/$APP/.clone" ]]; then

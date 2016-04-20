@@ -21,7 +21,6 @@ dokku plugin:install https://github.com/crisward/dokku-clone.git clone
 dokku@dokku.me clone yourapp https://github.com/you/yourproject.git
 
 #eg 
-ssh dokku@dokku.me apps:create nodetest
 ssh dokku@dokku.me clone nodetest https://github.com/heroku/node-js-getting-started.git
 
 # you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
