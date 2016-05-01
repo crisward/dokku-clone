@@ -19,7 +19,7 @@ clone_main_cmd() {
       git clone "$GITURL" .clone
     else
       dokku_log_info1 "Creating $APP from $GITURL $TAGNAME"
-      git clone --depth=1 -n -qq --branch "$TAGNAME" "$GITURL" .clone
+      git clone --depth 1 -n -qq --branch "$TAGNAME" "$GITURL" .clone
       cd .clone
       git checkout -qq -b master 
       cd ..

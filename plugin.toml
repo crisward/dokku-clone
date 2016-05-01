@@ -1,4 +1,4 @@
 [plugin]
 description = "dokku git clone plugin"
-version = "0.1.0"
+version = "0.4.1"
 [plugin.config]
