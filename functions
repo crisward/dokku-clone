@@ -6,12 +6,13 @@ clone_main_cmd() {
   declare desc="creates/updates app from remote git repo"
   declare APP="$2" GITURL="$3" TAGNAME="$4"
   local cmd="$1"
+  local APP_PATH=$DOKKU_ROOT/$APP
+  local PRERECEIVE_HOOK="$APP_PATH/hooks/pre-receive"
 
   [[ -z $2 ]] && dokku_log_fail "Please specify an app to run the command on"
   [[ -z $3 ]] && dokku_log_fail "Please specify an app name and git url ie. dokku clone <app> <giturl>"
   [[ -d "$DOKKU_ROOT/$APP" ]] || dokku apps:create "$APP"
 
-  
   if [[ ! -d "$DOKKU_ROOT/$APP/.clone" ]]; then
     cd "$DOKKU_ROOT/$APP"
     if [[ -z $TAGNAME ]]; then
@@ -21,11 +22,20 @@ clone_main_cmd() {
       dokku_log_info1 "Creating $APP from $GITURL $TAGNAME"
       git clone --depth 1 -n -qq --branch "$TAGNAME" "$GITURL" .clone
       cd .clone
-      git checkout -qq -b master 
+      git checkout -qq -b master
       cd ..
     fi
     rsync -a "$DOKKU_ROOT/$APP/.clone/.git/" ./
     rm -rf "$DOKKU_ROOT/$APP/.clone"
+
+    cat > "$PRERECEIVE_HOOK" <<EOF
+#!/usr/bin/env bash
+set -e; set -o pipefail;
+
+cat | DOKKU_ROOT="$DOKKU_ROOT" dokku git-hook $APP
+EOF
+    chmod +x "$PRERECEIVE_HOOK"
+
     dokku ps:rebuild "$APP"
   fi
 }
