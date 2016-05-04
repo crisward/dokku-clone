@@ -8,7 +8,7 @@ case "$1" in
     help_content_func() {
       declare desc="return help_content string"
       cat<<help_content
-    clone, creates/updates app from remote git repo
+    clone <git url> <optional branch / tag>, creates/updates app from remote git repo
     clone:key, outputs the dokku public deploy key
     clone:allow, adds a domain to known_hosts
 help_content

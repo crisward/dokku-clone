@@ -41,7 +41,15 @@ ssh dokku@dokku.me clone:key | pbcopy
 
 # before cloning the repo, you'll need to add the remote to known hosts with
 ssh dokku@dokku.me clone:allow github.com
+```
 
+### Cloning Branches and Tags
+
+If you would like to build your app from another branch or tag your can pass that is a a third parameter
+ie.
+
+```bash
+ssh dokku@dokku.me clone nodetest https://github.com/heroku/node-js-getting-started.git 2016
 ```
 
 ## Credits
