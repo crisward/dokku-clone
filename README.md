@@ -45,7 +45,7 @@ ssh dokku@dokku.me clone:allow github.com
 
 ### Cloning Branches and Tags
 
-If you would like to build your app from another branch or tag your can pass that is a a third parameter
+If you would like to build your app from another branch or tag your can pass that in as a third parameter
 ie.
 
 ```bash
