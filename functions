@@ -51,7 +51,7 @@ clone_key_cmd() {
   cat "$DOKKU_ROOT/.ssh/id_rsa.pub"
 }
 
-_allow_cmd() {
+clone_allow_cmd() {
   declare desc="adds a domain to known_hosts"
   declare DOMAIN="$2"
   local cmd="$1"
