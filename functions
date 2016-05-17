@@ -28,6 +28,8 @@ clone_main_cmd() {
     rsync -a "$DOKKU_ROOT/$APP/.clone/.git/" ./
     rm -rf "$DOKKU_ROOT/$APP/.clone"
 
+    git config --bool core.bare true
+
     cat > "$PRERECEIVE_HOOK" <<EOF
 #!/usr/bin/env bash
 set -e; set -o pipefail;
