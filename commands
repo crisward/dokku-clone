@@ -28,6 +28,7 @@ help_content
     else
       cat<<help_desc
     clone, Plugin for creating applications from a git url
+help_desc
     fi
     ;;
 
