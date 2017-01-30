@@ -23,8 +23,11 @@ help_content
       echo ''
       echo '$ dokku clone nodeapp https://github.com/heroku/node-js-sample'
       echo ''
-    else
+    elif [[ $(ps -o command= $PPID) == *"--all"* ]]; then
       help_content_func
+    else
+      cat<<help_desc
+    clone, Plugin for creating applications from a git url
     fi
     ;;
 
