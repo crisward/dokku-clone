@@ -17,13 +17,16 @@ dokku plugin:install https://github.com/crisward/dokku-clone.git clone
 ## Usage
 
 ```bash
-# create or update and app from eg github
+# create or update and app from e.g. GitHub
 dokku@dokku.me clone yourapp https://github.com/you/yourproject.git
 
-#eg 
+# e.g: 
 ssh dokku@dokku.me clone nodetest https://github.com/heroku/node-js-getting-started.git
 
-# you'll then have the heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
+# you then have the Heroku sample app on nodetest.dokku.me (you may have to update your hosts file)
+
+# clone a local app:
+ssh dokku@dokku.me clone nodetest-clone ~/nodetest
 ```
 
 ### Private Repos / git urls
