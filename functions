@@ -56,7 +56,7 @@ clone_key_cmd() {
 
 clone_allow_cmd() {
   declare desc="adds a domain to known_hosts"
-  declare DOMAIN="$2" TAGNAME="${3:-22}"
+  declare DOMAIN="$2" PORT="${3:-22}"
   local cmd="$1"
 
   [[ -z $2 ]] && dokku_log_fail "Please supply a git domain ie 'dokku clone:allow github.com'"
