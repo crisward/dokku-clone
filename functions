@@ -5,7 +5,7 @@ source "$PLUGIN_AVAILABLE_PATH/ps/functions"
 
 clone_main_cmd() {
   declare desc="creates/updates app from remote git repo"
-  declare APP="$2" GITURL="$3" TAGNAME="${4:-master}"
+  declare APP="$2" GITURL="$3" TAGNAME="${4:-master}" NORESTART="${5}"
   local cmd="$1"
   local APP_PATH=$DOKKU_ROOT/$APP
   local PRERECEIVE_HOOK="$APP_PATH/hooks/pre-receive"
@@ -39,7 +39,10 @@ cat | DOKKU_ROOT="$DOKKU_ROOT" dokku git-hook $APP
 EOF
     chmod +x "$PRERECEIVE_HOOK"
 
-    ps_rebuild "$APP"
+    if [[ ! "$NORESTART" == "--no-restart" ]]; then
+      ps_rebuild "$APP"
+    fi
+
   fi
 }
 

@@ -15,7 +15,7 @@ help_content
     }
 
     if [[ $1 = "clone:help" ]] ; then
-      echo -e 'Usage: dokku clone <app> <git-url>'
+      echo -e 'Usage: dokku clone <app> <git-url> [--no-restart]'
       echo ''
       echo 'Clones and builds remote repos into dokku app'
       echo ''
