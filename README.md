@@ -2,6 +2,12 @@
 
 A dokku plugin which allows you to create an app from a git url
 
+## Update!
+If you're using version 0.23.0 or above this plugin is no longer required.
+Instead use the dokku `git:sync` command.
+
+See http://dokku.viewdocs.io/dokku~v0.23.0/deployment/methods/git/ for more informaiton
+
 
 ## Requirements
 
